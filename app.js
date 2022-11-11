@@ -1,27 +1,33 @@
 import express from 'express';
-//import jwt from "jsonwebtoken";
-//import dotenv from "dotenv";
+import path from 'path';
+import logger from 'morgan';
+import cookieParser from 'cookie-parser';
 
 // get page 
 import indexRouter from './routes/index.js';
 import signUpRouter from './routes/signup.js';
 import homeRouter from './routes/home.js';
+import customersRouter from './routes/api/customers.js';
+
 
 // main server
 const app = express();
 app.set('port', process.env.PORT || 3000);
 
 // pulic static
-app.use(express.static('public/stylesheets'));
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, "public/stylesheets")));
 
 // post erased
+app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-
+app.use(cookieParser()); 
 
 app.use('/', indexRouter);
 app.use('/signup', signUpRouter);
 app.use('/home', homeRouter);
+app.use('/api/customers', customersRouter);
 
 // error
 app.use((req, res, next) => {
@@ -31,3 +37,5 @@ app.use((req, res, next) => {
 app.listen(app.get('port'), () => {
     console.log(app.get('port'), '빈 포트에서 대기 중');
 });
+
+export default app;
