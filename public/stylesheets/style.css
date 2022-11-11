@@ -1,0 +1,32 @@
+.background_orange{
+    background-color:rgb(255, 174, 0);
+    color:white;
+    font-weight:bold;
+    border-color:rgb(255, 174, 0);
+}
+
+.result{
+    color:black;
+    text-align: center;
+    font-weight:bold;
+    font-size: xx-large;
+}
+
+a:link {
+    font-weight:bold;
+    color:rgb(255, 174, 0);
+}
+
+a:visited {
+    font-weight:bold;
+    color:rgb(255, 174, 0);
+}
+
+a:hover{
+    color : rgb(146, 69, 6);
+}
+
+a:active {
+    font-weight:bold;
+    color:rgb(255, 174, 0);
+}

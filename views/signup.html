@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SignUp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="../style.css" rel="stylesheet"> 
+    <!--<script src="../move.js"></script> -->
+  </head>
+  <body class="page" id="index">
+    <!-- 상단 바 생성 -->
+    <nav class="navbar navbar-dark bg-warning justify-content-center navbar-fixed-top">
+        <span class="navber-text mb-0 h1" style="color:white;"><b>회원가입</b></span>   
+    </nav>
+    <!-- login form 생성 -->
+    <form class = "p-3">
+      <div class="mb-3 row">
+        <label for="exampleInputId1" class="form-label">ID</label>
+        <div class="col-10">
+          <input type="text" class="form-control" id="make_id">
+        </div>
+        <div class="col-2" style="text-align: center;">
+          <button type="button" class="btn btn-warning mx-2" style='color:white; font-weight:bold; display: inline-block;'>중복체크</button>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="make_password">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password 재확인</label>
+        <input type="password" class="form-control" id="check_password">
+      </div>
+      <div>
+        <p id='password_result'>오류 메세지 노출용 텍스트</p>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-warning mx-2" style='color:white; font-weight:bold;'>Submit</button>
+      </div>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  </body>
+</html>
