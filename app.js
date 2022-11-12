@@ -17,11 +17,12 @@ app.set('port', process.env.PORT || 3000);
 // pulic static
 const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, "public/stylesheets")));
+app.use(express.static(path.join(__dirname, "public/javascripts")));
 
 // post erased
 app.use(logger("dev"));
+app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
 app.use(cookieParser()); 
 
 app.use('/', indexRouter);
