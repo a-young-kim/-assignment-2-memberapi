@@ -5,8 +5,6 @@ import Customer from '../../mongoose/schemas/customer.js';
 
 const router = express.Router();
 
-let check_id = "";
-
 mongoose_connect();
 
 router.get('/', async(req, res) => {
@@ -16,9 +14,9 @@ router.get('/', async(req, res) => {
 });
 
 router.post('/insert', async(req, res) => {
-    console.log('출력');
-    console.log(req.body);
+
     const customers = await Customer.findOne({login_id: req.body.login_id}).exec();
+    
     if(customers == null){
         const result = await Customer.create(req.body);
         res.send(result);
@@ -30,10 +28,11 @@ router.post('/insert', async(req, res) => {
 
 router.post('/checkId', async(req, res) => {
     let check_id = req.body.id;
-    console.log(check_id);
+
     const customers = await Customer.findOne({login_id : check_id}).exec();
-    
+
     res.send(JSON.stringify(customers));
+    
 });
 
 export default router;

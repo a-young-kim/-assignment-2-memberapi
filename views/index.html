@@ -6,7 +6,7 @@
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link href="../style.css" rel="stylesheet"> 
-    <!--<script src="../move.js"></script> -->
+    <script src="../check_index.js"></script>
   </head>
   <body class="page" id="index">
     <!-- 상단 바 생성 -->
@@ -14,14 +14,14 @@
         <span class="navber-text mb-0 h1" style="color:white;"><b>Login</b></span>   
     </nav>
     <!-- login form 생성 -->
-    <form class = "p-3">
+    <form class = "p-3" method="post" onsubmit="base64()">
       <div class="mb-3">
         <label for="exampleInputId1" class="form-label">ID</label>
-        <input type="text" class="form-control" id="id">
+        <input type="text" class="form-control" id="id" name="id">
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password">
+        <input type="password" class="form-control" id="password" name="password">
       </div>
       <div>
         <button type="submit" class="btn btn-warning mx-2" style='color:white; font-weight:bold;'>Submit</button>

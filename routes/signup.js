@@ -37,7 +37,7 @@ router.post('/', async function(req, res){
     };
    
     request.post(options, function(err, httpResponse, body){
-        if(body == undefined){
+        if(body == ""){
             res.send("<script>alert('사용할 수 없는 아이디입니다.');location.href=document.referrer;</script>");
         }
         else{

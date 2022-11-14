@@ -28,6 +28,7 @@ function get_ID(){
 function check_ID(data){
 
     let ID_result = document.getElementById('ID_result');
+
     if(data == null){
         ID_result.innerText = "사용 가능한 아이디입니다.";
         summit_Active = summit_Active + 1;
@@ -76,11 +77,10 @@ window.onload = function(){
 };
 
 function base64(){
-    let password = document.getElementById('make_password');
+    const password = document.getElementById('make_password');
     const base64_password = window.btoa(password.value);
 
     password.value = base64_password;
-    console.log(password.value);
 
     return true;
 }
