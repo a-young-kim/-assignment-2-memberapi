@@ -71,14 +71,13 @@ function btnActive(){
         btn.disabled = false;
     }
 }
-
-async function summitData(){
+function summitData(){
     const password = window.btoa(document.getElementById('make_password').value);
     const id = document.getElementById('make_id').value;
 
     const url = 'http://'+ host +'/signup';
 
-   await fetch(url,{
+   fetch(url,{
         method : "POST",
         headers: {
             "Content-Type":"application/json",
@@ -95,7 +94,6 @@ async function summitData(){
         }
         else{
             alert('이미 존재하는 아이디입니다. 다른 아이디를 입력해주세요.');
-            
         }
     });
 }

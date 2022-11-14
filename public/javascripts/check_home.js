@@ -4,6 +4,7 @@ const host = '34.193.68.110';
 window.onload = function(){
     const url = 'http://'+ host +'/home';
     let i = "";
+    
    fetch(url,{
         method : "POST",
         headers: {
