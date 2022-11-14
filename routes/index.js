@@ -24,8 +24,9 @@ router.get('/', function(req, res){
 });
 
 router.post('/', async(req, res) => {
-    const check_id = req.body.id;
-    const check_password =req.body.password;
+
+    const check_id = req.id;
+    const check_password =req.password;
 
     const options = {
         uri:'http://34.193.68.110:80/api/customers/checkId', 
