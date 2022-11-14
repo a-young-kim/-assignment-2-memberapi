@@ -70,13 +70,12 @@ function btnActive(){
     }
 }
 
-function summitData(){
+async function summitData(){
     const password = window.btoa(document.getElementById('make_password').value);
     const id = document.getElementById('make_id').value;
-
     const url = 'http://34.193.68.110:80/signup';
 
-   fetch(url,{
+    fetch(url,{
         method : "POST",
         headers: {
             "Content-Type":"application/json",
@@ -86,8 +85,7 @@ function summitData(){
             password: password
         }),
     })
-    .then((response) => response.json())
-    .then(data => console.log(data));
+    .then((response) => resolve(response));
 }
 
 window.onload = function(){
