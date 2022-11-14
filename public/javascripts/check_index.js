@@ -5,19 +5,28 @@ function summitData(){
 
     const url = 'http://34.193.68.110:80/';
 
-    const res = fetch(url,{
-        method : "POST",
-        headers: {
-            "Content-Type":"application/json",
-        },
-        body: JSON.stringify({
-            id: id,
-            password:password
-        }),
+    sendHttpRequest('Post', url, {
+        id: id,
+        password:password
     })
     .then((response) => response.json())
     .then(data => checkToken(data));
 }
+
+const sendHttpRequest = (method, url, data) => {
+    const promise = new Promise ((resolve, reject) => {
+        const xhr = new XMLHTTPRequest();
+        xhr.open(method, url);
+        xhr.responseType = 'json';
+
+        xhr.onload = () => {
+            resolve(xhr.response);
+        };
+
+        xhr.send(JSON.stringify(data));
+    });
+    return promise;
+};
 
 function checkToken(data){
     const token = data.token;   
@@ -53,3 +62,5 @@ window.onload = function(){
         }
     });   
 };
+
+
