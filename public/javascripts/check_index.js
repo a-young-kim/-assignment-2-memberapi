@@ -13,7 +13,7 @@ function summitData(){
             "Content-Type":"application/json",
         },
         body: JSON.stringify({
-            login_id: id,
+            id: id,
             password: password
         }),
     })
