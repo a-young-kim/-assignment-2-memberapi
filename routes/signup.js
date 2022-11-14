@@ -3,6 +3,8 @@ import fs from 'fs';
 import request from 'request';
 import crypto from 'crypto';
 
+const host = '34.193.68.110';
+
 const router = express.Router();
 
 // get
@@ -27,7 +29,7 @@ router.post('/', async function(req, res){
     const new_password = crypto.pbkdf2Sync(password, new_salt, 1, 32, 'sha512').toString('base64');
 
     const options = {
-        uri:'http://34.193.68.110:80/api/customers/insert', 
+        uri:'http://'+ host +'/api/customers/insert', 
         method: 'POST',
         form: {
           login_id: body.login_id,
@@ -37,6 +39,7 @@ router.post('/', async function(req, res){
     };
    
     request.post(options, function(err, httpResponse, body){
+        console.log(body);
         if(body == ""){
             res.send("<script>alert('사용할 수 없는 아이디입니다.');location.href=document.referrer;</script>");
         }

@@ -1,3 +1,4 @@
+const host = '34.193.68.110';
 
 let summit_Active = 0;
 
@@ -10,7 +11,7 @@ function get_ID(){
         alert('아이디를 입력해주세요');
         return;
     }
-    const url = 'http://34.193.68.110:80/api/customers/checkId';
+    const url = 'http://'+ host +'/api/customers/checkId';
 
     const res = fetch(url,{
         method : "POST",
@@ -73,27 +74,47 @@ function btnActive(){
 async function summitData(){
     const password = window.btoa(document.getElementById('make_password').value);
     const id = document.getElementById('make_id').value;
-    const url = 'http://34.193.68.110:80/signup';
 
-    fetch(url,{
+    const url2 = 'http://'+ host +'/api/customers/checkId';
+    fetch(url2,{
         method : "POST",
         headers: {
             "Content-Type":"application/json",
         },
         body: JSON.stringify({
-            login_id: id,
-            password: password
+            id: id
         }),
     })
-    .then((response) => {
-        console.log(response);
-         window.location.href = response.url;
+    .then((response) => response.json())
+    .then(data => {
+        if(data == null){
+            const url = 'http://'+ host +'/signup';
+
+            fetch(url,{
+                method : "POST",
+                headers: {
+                    "Content-Type":"application/json",
+                },
+                body: JSON.stringify({
+                    login_id: id,
+                    password: password
+                }),
+            })
+            .then((response) => {
+                console.log(response);
+                window.location.href = response.url;
+            });
+        }
+        else{
+            alert('이미 존재하는 아이디입니다. 다른 아이디를 입력해주세요.');
+            window.location.href = '/signup';
+        }
     });
 }
 
 window.onload = function(){
     
-    const url = 'http://34.193.68.110:80/home';
+    const url = 'http://'+ host +'/home';
 
     const res = fetch(url,{
         method : "POST",

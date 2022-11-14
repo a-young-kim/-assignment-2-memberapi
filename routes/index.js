@@ -5,6 +5,8 @@ import crypto from 'crypto';
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 
+const host = '34.193.68.110';
+
 const router = express.Router();
 
 dotenv.config();
@@ -24,12 +26,11 @@ router.get('/', function(req, res){
 });
 
 router.post('/', async(req, res) => {
-
-    const check_id = req.id;
-    const check_password =req.password;
+    const check_id = req.body.id;
+    const check_password =req.body.password;
 
     const options = {
-        uri:'http://34.193.68.110:80/api/customers/checkId', 
+        uri:'http://'+ host +'/api/customers/checkId', 
         method: 'POST',
         form: {
             id: check_id

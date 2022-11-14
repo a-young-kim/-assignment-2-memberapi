@@ -1,5 +1,7 @@
+const host = '34.193.68.110';
+
 window.onload = function(){
-    const url = 'http://34.193.68.110:80/home';
+    const url = 'http://'+ host +'/home';
     let i = "";
    fetch(url,{
         method : "POST",
@@ -27,7 +29,7 @@ window.onload = function(){
 function logout(){
     window.sessionStorage.clear();
 
-    const url = 'http://34.193.68.110:80/home/logout';
+    const url = 'http://'+ host +'/home/logout';
 
     fetch(url,{
         method : "POST",
