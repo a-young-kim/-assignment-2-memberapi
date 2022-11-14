@@ -1,4 +1,5 @@
 const host = '34.193.68.110';
+//const host = 'localhost:3000';
 
 let summit_Active = 0;
 
@@ -75,39 +76,26 @@ async function summitData(){
     const password = window.btoa(document.getElementById('make_password').value);
     const id = document.getElementById('make_id').value;
 
-    const url2 = 'http://'+ host +'/api/customers/checkId';
-    fetch(url2,{
+    const url = 'http://'+ host +'/signup';
+
+   await fetch(url,{
         method : "POST",
         headers: {
             "Content-Type":"application/json",
         },
         body: JSON.stringify({
-            login_id: id
+            login_id: id,
+            password: password
         }),
     })
-    .then((response) => response.json())
-    .then(data => {
-        if(data == null){
-            const url = 'http://'+ host +'/signup';
-
-            fetch(url,{
-                method : "POST",
-                headers: {
-                    "Content-Type":"application/json",
-                },
-                body: JSON.stringify({
-                    login_id: id,
-                    password: password
-                }),
-            })
-            .then((response) => {
-                console.log(response);
-                window.location.href = response.url;
-            });
+    .then((response) => {
+        
+        if(response.json()!= ""){
+            window.location.href = response.url;
         }
         else{
             alert('이미 존재하는 아이디입니다. 다른 아이디를 입력해주세요.');
-            window.location.href = '/signup';
+            
         }
     });
 }

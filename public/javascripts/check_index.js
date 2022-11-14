@@ -1,4 +1,5 @@
 const host = '34.193.68.110';
+//const host = 'localhost:3000';
 
 function summitData(){
 

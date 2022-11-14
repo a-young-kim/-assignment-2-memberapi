@@ -4,7 +4,7 @@ import request from 'request';
 import crypto from 'crypto';
 
 const host = '34.193.68.110';
-
+//const host = 'localhost:3000';
 const router = express.Router();
 
 // get
@@ -37,15 +37,17 @@ router.post('/', async function(req, res){
           salt: new_salt,
         }
     };
-   
+    
+
     request.post(options, function(err, httpResponse, body){
-        console.log(body);
+        
         if(body == ""){
-            res.send("<script>alert('사용할 수 없는 아이디입니다.');location.href=document.referrer;</script>");
+            res.send("");
         }
         else{
-            res.redirect('/');
+            res.send("login");
         }
+        
     });
 });
 

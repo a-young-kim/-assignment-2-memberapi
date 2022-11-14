@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 
 const host = '34.193.68.110';
+//const host = 'localhost:3000';
 
 const router = express.Router();
 
