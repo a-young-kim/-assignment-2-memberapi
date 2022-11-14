@@ -85,7 +85,10 @@ async function summitData(){
             password: password
         }),
     })
-    .then((response) => resolve(response));
+    .then((response) => {
+        console.log(response);
+         window.location.href = response.url;
+    });
 }
 
 window.onload = function(){
