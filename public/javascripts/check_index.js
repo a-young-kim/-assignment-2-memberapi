@@ -9,7 +9,7 @@ function summitData(){
         id: id,
         password:password
     })
-    .then((response) => response.json())
+    .then((response) => console.log(response))
     .then(data => checkToken(data));
 }
 
