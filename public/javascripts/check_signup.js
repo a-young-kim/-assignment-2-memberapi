@@ -74,7 +74,7 @@ function summitData(){
     const password = window.btoa(document.getElementById('make_password').value);
     const id = document.getElementById('make_id').value;
 
-    const url = 'http://localhost:3000/signup';
+    const url = 'http://localhost:80/signup';
 
    fetch(url,{
         method : "POST",
@@ -92,7 +92,7 @@ function summitData(){
 
 window.onload = function(){
     
-    const url = 'http://localhost:3000/home';
+    const url = 'http://localhost:80/home';
 
     const res = fetch(url,{
         method : "POST",

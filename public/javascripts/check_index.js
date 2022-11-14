@@ -3,7 +3,7 @@ function summitData(){
     const id = document.getElementById('id').value;
     const password = window.btoa(document.getElementById('password').value);
 
-    const url = 'http://localhost:3000/';
+    const url = 'http://localhost:80/';
 
     const res = fetch(url,{
         method : "POST",
@@ -37,7 +37,7 @@ function checkToken(data){
 }
 
 window.onload = function(){
-    const url = 'http://localhost:3000/home';
+    const url = 'http://localhost:80/home';
 
     const res = fetch(url,{
         method : "POST",

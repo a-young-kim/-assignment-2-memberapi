@@ -14,7 +14,7 @@ import customersRouter from './routes/api/customers.js';
 
 // main server
 const app = express();
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 80);
 
 // pulic static
 const __dirname = path.resolve();
@@ -44,12 +44,7 @@ app.use('/signup', signUpRouter);
 app.use('/home', homeRouter);
 app.use('/api/customers', customersRouter);
 
-// session
-/*app.use(cors({
-    origin: true,
-    credentials: true
-}));*/
-// error
+
 app.use((req, res, next) => {
     res.status(404).send('Not Found');
 });

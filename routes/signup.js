@@ -27,7 +27,7 @@ router.post('/', async function(req, res){
     const new_password = crypto.pbkdf2Sync(password, new_salt, 1, 32, 'sha512').toString('base64');
 
     const options = {
-        uri:'http://localhost:3000/api/customers/insert', 
+        uri:'http://localhost:80/api/customers/insert', 
         method: 'POST',
         form: {
           login_id: body.login_id,
