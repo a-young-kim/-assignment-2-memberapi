@@ -15,7 +15,7 @@ function summitData(){
 
 const sendHttpRequest = (method, url, data) => {
     const promise = new Promise ((resolve, reject) => {
-        const xhr = new XMLHTTPRequest();
+        const xhr = new XMLHttpRequest();
         xhr.open(method, url);
         xhr.responseType = 'json';
 
