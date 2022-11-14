@@ -10,7 +10,7 @@ function get_ID(){
         alert('아이디를 입력해주세요');
         return;
     }
-    const url = 'http://34.193.68.110:3000/api/customers/checkId';
+    const url = 'http://34.193.68.110:80/api/customers/checkId';
 
     const res = fetch(url,{
         method : "POST",
@@ -110,6 +110,6 @@ window.onload = function(){
             const btn = document.getElementById('summitbtn');
             btn.disabled = true;
         }
-    });    
+    });
 };
 
