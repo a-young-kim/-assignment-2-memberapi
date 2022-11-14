@@ -28,7 +28,7 @@ router.post('/', async(req, res) => {
     const check_password =req.body.password;
 
     const options = {
-        uri:'http://localhost:80/api/customers/checkId', 
+        uri:'http://34.193.68.110:80/api/customers/checkId', 
         method: 'POST',
         form: {
             id: check_id
