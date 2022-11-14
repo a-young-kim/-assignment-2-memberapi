@@ -14,7 +14,7 @@ router.get('/', async(req, res) => {
 });
 
 router.post('/insert', async(req, res) => {
-
+    
     const customers = await Customer.findOne({login_id: req.body.login_id}).exec();
     
     if(customers == null){
@@ -30,7 +30,7 @@ router.post('/checkId', async(req, res) => {
     let check_id = req.body.id;
 
     const customers = await Customer.findOne({login_id : check_id}).exec();
-
+    
     res.send(JSON.stringify(customers));
     
 });

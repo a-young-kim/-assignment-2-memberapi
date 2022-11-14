@@ -20,8 +20,8 @@ router.get('/', function(req, res){
 });
 
 router.post('/', async function(req, res){
-    let body = req.body;
-    let password = body.password;
+    const body = req.body;
+    const password = body.password;
     
     const new_salt = crypto.randomBytes(32).toString('base64');
     const new_password = crypto.pbkdf2Sync(password, new_salt, 1, 32, 'sha512').toString('base64');

@@ -17,4 +17,22 @@ router.get('/', function(req, res){
     });
 });
 
+router.post('/', function(req, res){
+    if(req.session.loginData != undefined){
+        res.json({
+            message: 'login',
+            id: req.session.loginData,
+    });
+    }
+
+    else{
+        res.json({message: 'unlogin'});
+    }
+});
+
+router.post('/logout', function(req, res){
+   req.session.destroy(error => {if(error) console.log(error);});
+   res.redirect("/");
+});
+
 export default router;

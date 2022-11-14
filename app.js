@@ -2,6 +2,8 @@ import express from 'express';
 import path from 'path';
 import logger from 'morgan';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import sessionParser from 'express-session';
 
 // get page 
 import indexRouter from './routes/index.js';
@@ -25,11 +27,28 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(cookieParser()); 
 
+app.use(
+    sessionParser({
+        key: "loginData",
+        secret: "test",
+        resave: true,
+        saveUninitialized: false,
+        cookies:{
+            expires: 60 * 60 *24
+        },
+    })
+);
+
 app.use('/', indexRouter);
 app.use('/signup', signUpRouter);
 app.use('/home', homeRouter);
 app.use('/api/customers', customersRouter);
 
+// session
+/*app.use(cors({
+    origin: true,
+    credentials: true
+}));*/
 // error
 app.use((req, res, next) => {
     res.status(404).send('Not Found');

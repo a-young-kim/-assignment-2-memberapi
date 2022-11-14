@@ -3,7 +3,7 @@ let summit_Active = 0;
 
 function get_ID(){
     // find input ID
-    let input = document.getElementById('make_id').value;
+    const input = document.getElementById('make_id').value;
     
     if(input == "")
     {
@@ -27,7 +27,7 @@ function get_ID(){
 
 function check_ID(data){
 
-    let ID_result = document.getElementById('ID_result');
+    const ID_result = document.getElementById('ID_result');
 
     if(data == null){
         ID_result.innerText = "사용 가능한 아이디입니다.";
@@ -41,10 +41,10 @@ function check_ID(data){
 }
 
 function check_Password(){
-    let password = document.getElementById('make_password').value;
-    let check_password = document.getElementById('check_password').value;
+    const password = document.getElementById('make_password').value;
+    const check_password = document.getElementById('check_password').value;
 
-    let password_result = document.getElementById('password_result');
+    const password_result = document.getElementById('password_result');
     if (password == ""){
         alert('비밀번호를 입력해주세요');
         return;
@@ -65,22 +65,51 @@ function check_Password(){
 function btnActive(){
 
     const btn = document.getElementById('summitbtn');
-    
     if( summit_Active > 1){
         btn.disabled = false;
     }
 }
 
+function summitData(){
+    const password = window.btoa(document.getElementById('make_password').value);
+    const id = document.getElementById('make_id').value;
+
+    const url = 'http://localhost:3000/signup';
+
+   fetch(url,{
+        method : "POST",
+        headers: {
+            "Content-Type":"application/json",
+        },
+        body: JSON.stringify({
+            login_id: id,
+            password: password
+        }),
+    })
+    .then((response) => response.json())
+    .then(data => console.log(data));
+}
+
 window.onload = function(){
-    const btn = document.getElementById('summitbtn');
-    btn.disabled = true;
+    
+    const url = 'http://localhost:3000/home';
+
+    const res = fetch(url,{
+        method : "POST",
+        headers: {
+            "Content-Type":"application/json",
+        },
+        body: JSON.stringify({}),
+    })
+    .then((response) => response.json())
+    .then(data => {
+        if(data.message == 'login'){
+            window.location.href = '/home';
+        }
+        else{
+            const btn = document.getElementById('summitbtn');
+            btn.disabled = true;
+        }
+    });    
 };
 
-function base64(){
-    const password = document.getElementById('make_password');
-    const base64_password = window.btoa(password.value);
-
-    password.value = base64_password;
-
-    return true;
-}
