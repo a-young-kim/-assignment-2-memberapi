@@ -3,8 +3,8 @@ import fs from 'fs';
 import request from 'request';
 import crypto from 'crypto';
 
-const host = '34.193.68.110';
-//const host = 'localhost:3000';
+//const host = '34.193.68.110';
+const host = 'localhost:3000';
 const router = express.Router();
 
 // get
@@ -37,15 +37,15 @@ router.post('/', async function(req, res){
           salt: new_salt,
         }
     };
-    
 
     request.post(options, function(err, httpResponse, body){
-        
-        if(body == ""){
+        const body2 = JSON.parse(body);
+        console.log(body2);
+        if(body2 == ""){
             res.send("");
         }
         else{
-            res.send("login");
+            res.redirect('/');
         }
         
     });

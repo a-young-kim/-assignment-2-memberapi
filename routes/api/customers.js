@@ -19,10 +19,10 @@ router.post('/insert', async(req, res) => {
     
     if(customers == null){
         const result = await Customer.create(req.body);
-        res.send(result);
+        res.send(JSON.stringify(result));
     }
     else{
-        res.send("");
+        res.send(JSON.stringify(""));
     }
 });
 
