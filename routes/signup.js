@@ -3,8 +3,8 @@ import fs from 'fs';
 import request from 'request';
 import crypto from 'crypto';
 
-//const host = '34.193.68.110';
-const host = 'localhost:3000';
+const host = '34.193.68.110';
+//const host = 'localhost:3000';
 const router = express.Router();
 
 // get
