@@ -64,7 +64,6 @@ function check_Password(){
 }
 
 function btnActive(){
-
     const btn = document.getElementById('summitbtn');
     if( summit_Active > 1){
         btn.disabled = false;
